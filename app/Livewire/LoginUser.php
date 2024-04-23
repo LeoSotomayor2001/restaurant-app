@@ -19,7 +19,7 @@ class LoginUser extends Component
 
     public function login()
     {
-        $validatedData = $this->validate([
+        $this->validate([
             'email' => 'required',
             'password' => 'required|min:6',
         ], [
@@ -31,11 +31,13 @@ class LoginUser extends Component
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             // Autenticación exitosa, redireccionar a la página principal o a donde sea necesario
-            return redirect()->route('principal');
+            return redirect()->route('admin');
         } else {
             // Autenticación fallida, mostrar mensaje de error
             session()->flash('error', 'Credenciales incorrectas. Por favor, intenta de nuevo.');
         }
+
+       
 
         
     }
