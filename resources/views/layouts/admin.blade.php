@@ -11,15 +11,16 @@
     <div class="flex flex-col md:flex-row h-screen">
         <aside class="bg-gray-800 text-white p-6 shadow-lg  flex flex-col items-center md:w-1/4">
             <a href="{{ route('admin') }}" class="mb-4 md:mb-0 text-3xl font-bold text-black hover:text-gray-800 transition-colors duration-300">
-                <span class="text-green-400">Restaurant-</span><span class="text-blue-300">App</span>
+                    <img src="{{ asset('img/logo.svg') }}" alt="logo" class="w-56">
+                
             </a>
-            <div class="mt-20">
+            <div class="mt-2">
                 <div class="flex flex-col items-center justify-center">
                     <ul>
                         <li class="mb-2">
-                            <a href="{{ route('menus.create') }}" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
+                            <a href="{{ route('menus.index') }}" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
                                 <span class="text-green-500 mr-2">&#8226;</span>
-                                <span>Crear menu</span>
+                                <span>Gestión de menús</span>
                             </a>
                         </li>
                         <li class="mb-2">

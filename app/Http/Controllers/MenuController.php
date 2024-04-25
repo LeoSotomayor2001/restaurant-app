@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MenuController extends Controller
 {
@@ -11,24 +13,20 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $menus=Menu::all();
+        return view('admin.menu.index',compact('menus'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('admin.menu.create');
+    {   
+        if (Gate::authorize('admin', auth()->user())) {
+            // Acción permitida solo para usuarios administradores
+            return view('admin.menu.create');
+        }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-  
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //

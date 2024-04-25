@@ -4,7 +4,7 @@
         <div class="alert alert-success">{{ session('message') }}</div>
     @endif
 
-    <form wire:submit.prevent="crearMenu" class="max-w-md mx-auto p-6 bg-gray-700 shadow-md rounded-lg">
+    <form wire:submit.prevent="crearMenu" class="max-w-md mx-auto p-6 bg-sky-800 shadow-md rounded-lg">
         <div class="mb-4">
             <label for="nombre" class="block font-bold text-2xl text-white">Nombre:</label>
             <input 

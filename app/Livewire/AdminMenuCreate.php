@@ -69,8 +69,7 @@ class AdminMenuCreate extends Component
 
     // Redireccionar o mostrar un mensaje de éxito si es necesario
 
-    // Por ejemplo, redireccionar a la lista de menús
-    //return redirect()->route('admin.menus.index')->with('success', 'El menú se ha creado correctamente.');
+    return redirect()->route('menus.index')->with('success', 'El menú se ha creado correctamente.');
 }
     public function render()
     { 
