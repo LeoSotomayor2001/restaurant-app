@@ -35,9 +35,9 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Menu $menu)
     {
-        //
+        return view('admin.menu.edit',compact('menu'));
     }
 
     /**
@@ -51,8 +51,5 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+
 }

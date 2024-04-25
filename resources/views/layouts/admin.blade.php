@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RestaurantApp - @yield('titulo')</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <div class="flex flex-col md:flex-row h-screen">
@@ -53,9 +53,18 @@
                                 <span>Informes y análisis</span>
                             </a>
                         </li>
+                        
                     </ul>
+
+                    
                 </div>
+                <a href="{{ route('logout') }}" class="flex items-center bg-red-600 px-4 py-2 rounded 
+                    hover:bg-red-700 transition-colors duration-300 w-full text-lg">
+                    <img src="{{ asset('img/logout.svg') }}" alt="logo" class="w-8 text-white">
+                    <span >Cerrar Sesión</span>
+                </a>
             </div>
+            
         </aside>
     
         <div class="flex-1 overflow-y-auto">
