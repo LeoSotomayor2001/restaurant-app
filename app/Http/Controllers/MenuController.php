@@ -16,6 +16,11 @@ class MenuController extends Controller
         $menus=Menu::all();
         return view('admin.menu.index',compact('menus'));
     }
+    public function search(){
+        $menus=Menu::all();
+
+        return view('inicio',compact('menus'));
+    }
 
     /**
      * Show the form for creating a new resource.

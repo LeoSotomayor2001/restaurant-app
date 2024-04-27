@@ -31,7 +31,13 @@ class LoginUser extends Component
 
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
             // Autenticación exitosa, redireccionar a la página principal o a donde sea necesario
-            return redirect()->route('admin');
+            if(Auth::user()->admin){
+                return redirect()->route('admin');
+
+            }
+            else{
+                return redirect()->route('principal');
+            }
         } else {
             // Autenticación fallida, mostrar mensaje de error
             session()->flash('error', 'Credenciales incorrectas. Por favor, intenta de nuevo.');

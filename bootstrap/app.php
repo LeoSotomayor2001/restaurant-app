@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\isAuth;
 use App\Http\Middleware\RedirectAdmin;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Application;
@@ -16,7 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'admin' => AdminMiddleware::class,
-            'redirect.admin' => RedirectAdmin::class
+            'redirect.admin' => RedirectAdmin::class,
+            'isAuth' => isAuth::class
         ]);
         
     })

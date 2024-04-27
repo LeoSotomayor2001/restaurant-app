@@ -33,6 +33,19 @@
                     </form>
                     
                 @endcan
+                @cannot('admin', auth()->user())
+                <form wire:submit.prevent='ordenarPedido({{$menu->id}})'>
+                
+                    <button 
+                        type="submit" 
+                        {{-- id="pedido" --}}
+                        class="px-4 py-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                    >
+                        Ordenar Pedido
+                    </button>
+                </form>
+              
+                @endcannot
             </div>
         @empty
             <p>No se encontraron resultados</p>

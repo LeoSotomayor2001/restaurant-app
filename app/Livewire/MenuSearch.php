@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Menu;
+use App\Models\Pedido;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -11,6 +12,7 @@ class MenuSearch extends Component
 
      public $search = '';
      public $listeners = ['destroy'];
+     public $menuId;
 
     public function render()
     {
@@ -25,8 +27,25 @@ class MenuSearch extends Component
     {
         $this->render();
     }
+    public function ordenarPedido(Menu $menu)
+    {
+        // Obtener el menú seleccionado
+        $menuPedido = Menu::find($menu->id);
 
-    
+        // Crear un nuevo pedido
+        $pedido = new Pedido();
+        $pedido->description = $menuPedido->nombre; 
+        $pedido->monto_total = $menuPedido->precio;  
+        
+        // Asociar el pedido al menú y al usuario actual
+        $pedido->menu_id=$menuPedido->id;
+        $pedido->user_id=auth()->user()->id;
+
+        // Guardar el pedido en la base de datos
+        $pedido->save();
+
+        return redirect()->to('/inicio');
+    }
 
     public function destroy(Menu $menu)
     {
