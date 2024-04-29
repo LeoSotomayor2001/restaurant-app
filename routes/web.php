@@ -33,4 +33,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inicio',[MenuController::class,'indexUser'])->name('inicio');
     Route::get('/{user:name}/pedidos',[PedidoController::class,'index'])->name('pedidos');
     Route::get('/notifications',[NotificationController::class,'index'])->name('notifications');
+    Route::get('/notifications/{user:name}',[NotificationController::class,'notificationUser'])->name('notifications.user');
 });

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido;
 use App\Models\User;
+use App\Notifications\NuevoPedidoNotification;
+use App\Notifications\PedidoCompletadoNotification;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -30,6 +32,10 @@ class PedidoController extends Controller
         $pedido->update([
             'estado' => 'Completado'
         ]);
+        //Crear una notificación
+        $user=User::find($pedido->user_id);
+        $user->notify(new PedidoCompletadoNotification($pedido));
+
         return redirect()->route('pedidos.admin');
     }
 }

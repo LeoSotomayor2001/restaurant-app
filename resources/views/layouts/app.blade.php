@@ -20,6 +20,16 @@
                     <div class="flex items-center justify-center gap-4">
                         <a href="{{route('inicio')}}" class="text-green-600">Ver menu</a>
                         <a href="{{route('pedidos',auth()->user())}}" class="text-green-600">Ver pedidos</a>
+                        <a href="{{route('notifications.user',auth()->user())}}" class="text-green-600">
+                            <span>
+                                Notificaciones 
+                                <span class="badge">
+                                    (
+                                    {{ auth()->user()->unreadNotifications->count() }}
+                                    )
+                                </span>
+                            </span>
+                        </a>
                         <a href="{{route('logout')}}" class="text-red-600">Cerrar Sesión</a>
 
                     </div>
