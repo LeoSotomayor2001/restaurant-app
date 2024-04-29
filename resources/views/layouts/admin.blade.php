@@ -24,33 +24,22 @@
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
+                            <a href="{{route('pedidos.admin')}}" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
                                 <span class="text-green-500 mr-2">&#8226;</span>
                                 <span>Gestión de pedidos</span>
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a href="#" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
+                            <a href="{{route('notifications')}}" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
                                 <span class="text-green-500 mr-2">&#8226;</span>
-                                <span>Gestión de usuarios</span>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
-                                <span class="text-green-500 mr-2">&#8226;</span>
-                                <span>Gestión de reservas</span>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
-                                <span class="text-green-500 mr-2">&#8226;</span>
-                                <span>Configuración del sistema</span>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="flex items-center hover:bg-gray-700 px-4 py-2 rounded text-lg">
-                                <span class="text-green-500 mr-2">&#8226;</span>
-                                <span>Informes y análisis</span>
+                                <span>
+                                    Notificaciones 
+                                    <span class="badge">
+                                        (
+                                        {{ auth()->user()->unreadNotifications->count() }}
+                                        )
+                                    </span>
+                                </span>
                             </a>
                         </li>
                         

@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Menu;
 use App\Models\Pedido;
+use App\Models\User;
+use App\Notifications\NuevoPedidoNotification;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
@@ -31,20 +33,30 @@ class MenuSearch extends Component
     {
         // Obtener el menú seleccionado
         $menuPedido = Menu::find($menu->id);
-
+    
+        // Verificar si se ha encontrado el menú
+        if (!$menuPedido) {
+            return redirect()->route('inicio')->with('error', 'El menú seleccionado no existe.');
+        }
+        
+    
         // Crear un nuevo pedido
         $pedido = new Pedido();
         $pedido->description = $menuPedido->nombre; 
         $pedido->monto_total = $menuPedido->precio;  
+        $admin = User::where('admin', 1)->first();
         
-        // Asociar el pedido al menú y al usuario actual
-        $pedido->menu_id=$menuPedido->id;
-        $pedido->user_id=auth()->user()->id;
 
+        // Asociar el pedido al menú y al usuario actual
+        $pedido->menu()->associate($menuPedido);
+        $pedido->user()->associate(auth()->user());
+        
+        // Crear una notificación
+        $admin->notify(new NuevoPedidoNotification($pedido));
         // Guardar el pedido en la base de datos
         $pedido->save();
-
-        return redirect()->to('/inicio');
+    
+        return redirect()->route('pedidos', ['user' => auth()->user()->name]);
     }
 
     public function destroy(Menu $menu)

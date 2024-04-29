@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('titulo')
     Pedidos
@@ -11,6 +11,20 @@
         <h2 class="text-xl font-bold mb-2">Nombre: {{ $pedido->description }}</h2>
         <p class="font-bold text-green-500 text-lg mb-2">Precio: {{ $pedido->monto_total }} Bs.</p>
         <p class="font-bold text-sky-500 text-lg mb-2">Estado: {{ $pedido->estado }}</p>
+        @if($pedido->estado === 'pendiente')
+            <form action="{{ route('pedidos.update', $pedido) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="estado" value="Entregado">
+                <button 
+                    type="submit" 
+                    class="bg-green-600 w-full hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                >
+                    Completar
+                </button>
+            </form>
+            
+        @endif
         <p class="text-gray-500 text-sm">{{ $pedido->created_at->diffForHumans() }}</p>
     </div>
     @empty
@@ -18,6 +32,3 @@
     @endforelse
 </div>
 @endsection
-
-
-

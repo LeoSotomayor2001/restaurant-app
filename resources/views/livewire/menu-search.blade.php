@@ -1,4 +1,5 @@
 <div>
+    
     <div class="flex flex-col sm:flex-row items-center mb-4 mt-5 ml-6">
         <div class="mb-4 sm:mb-0 sm:mr-2">
             <input type="text" wire:model="search" placeholder="Buscar por nombre" class="px-4 py-2 rounded-l-md border-gray-300 focus:outline-none focus:ring focus:border-blue-300 bg-gray-100">
@@ -10,7 +11,7 @@
         @endcan
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  animate-slide-in">
         @forelse ($menus as $menu)
             <div class="bg-white rounded-lg shadow-lg p-4">
                 <img src="{{ asset('storage/menus/' . $menu->image) }}" alt="{{ $menu->nombre }}" class="w-full object-cover object-center mb-4">
@@ -48,7 +49,7 @@
                 @endcannot
             </div>
         @empty
-            <p>No se encontraron resultados</p>
+            <p class="text-center text-2xl">No se encontraron resultados</p>
         @endforelse
     </div>
 
