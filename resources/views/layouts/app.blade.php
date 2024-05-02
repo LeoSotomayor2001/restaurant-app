@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <header class="p-3 bg-white text-white shadow">
+    <header class="p-3 bg-white text-white shadow ">
         <div class="container flex mx-auto justify-between items-center flex-col md:flex-row">
             <a href="{{ route('principal') }}" class="flex items-center mb-4 md:mb-0 text-3xl font-bold text-black hover:text-gray-800 transition-colors duration-300">
                 <img src="{{ asset('img/logo.svg') }}" alt="logo" class="w-16">

@@ -32,9 +32,10 @@ class MenuController extends Controller
             return view('admin.menu.create');
         }
     }
-    public function show(string $id)
+    public function show(Menu $menu)
     {
-        //
+        
+        return view('menu.show',compact('menu'));
     }
 
     /**

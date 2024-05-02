@@ -16,7 +16,7 @@ class isAuth
     public function handle(Request $request, Closure $next): Response
     {
         if (auth()->check()) {
-            return redirect('/inicio');
+            return redirect()->route('inicio');
         }
         return $next($request);
     }

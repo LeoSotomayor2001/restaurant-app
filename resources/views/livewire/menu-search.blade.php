@@ -14,7 +14,10 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  animate-slide-in">
         @forelse ($menus as $menu)
             <div class="bg-white rounded-lg shadow-lg p-4">
+                
                 <img src="{{ asset('storage/menus/' . $menu->image) }}" alt="{{ $menu->nombre }}" class="w-full object-cover object-center mb-4">
+
+                
                 <h2 class="text-xl font-bold mb-2">{{ $menu->nombre }}</h2>
                 <p class="text-gray-600 mb-2">{{ $menu->descripcion }}</p>
                 <p class="text-green-500 font-bold text-lg mb-5">{{ $menu->precio }} Bs.</p>
@@ -32,7 +35,7 @@
                         @method('DELETE')
                         <button type="submit" class="px-4 py-2 ml-2 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Eliminar Menú</button>
                     </form>
-                    
+                   
                 @endcan
                 @cannot('admin', auth()->user())
                 <form wire:submit.prevent='ordenarPedido({{$menu->id}})'>
@@ -44,7 +47,15 @@
                     >
                         Ordenar Pedido
                     </button>
+                    <a 
+                        href="{{route('menu.show', $menu->nombre)}}" 
+                        class="px-4 py-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 
+                        focus:outline-none focus:bg-blue-600"
+                    >
+                      Ver Menú
+                    </a>
                 </form>
+                
               
                 @endcannot
             </div>

@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[HomeController::class,'index'])->name('principal')->middleware(['redirect.admin','isAuth']);
-Route::get('/register',[RegisterController::class,'index'])->name('register');
-Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/register',[RegisterController::class,'index'])->name('register')->middleware(['redirect.admin','isAuth']);;
+Route::get('/login',[LoginController::class,'index'])->name('login')->middleware(['redirect.admin','isAuth']);
 
 
 //Admin
@@ -30,8 +30,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-    Route::get('/inicio',[MenuController::class,'indexUser'])->name('inicio');
+    Route::get('/menus',[MenuController::class,'indexUser'])->name('inicio');
     Route::get('/{user:name}/pedidos',[PedidoController::class,'index'])->name('pedidos');
     Route::get('/notifications',[NotificationController::class,'index'])->name('notifications');
     Route::get('/notifications/{user:name}',[NotificationController::class,'notificationUser'])->name('notifications.user');
+    Route::get('/menus/{menu:nombre}',[MenuController::class,'show'])->name('menu.show');
 });
