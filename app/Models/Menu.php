@@ -28,4 +28,7 @@ class Menu extends Model
         // Eliminar el menú
         $this->delete();
     }
+    public function resenas(){
+        return $this->hasMany(Resena::class);
+    }
 }

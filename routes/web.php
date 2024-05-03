@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ResenaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,4 +36,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/notifications',[NotificationController::class,'index'])->name('notifications');
     Route::get('/notifications/{user:name}',[NotificationController::class,'notificationUser'])->name('notifications.user');
     Route::get('/menus/{menu:nombre}',[MenuController::class,'show'])->name('menu.show');
+    //Reseñas
+    Route::post('/menus/{menu:nombre}',[ResenaController::class,'store'])->name('resena.store');
 });

@@ -10,14 +10,14 @@
 <body>
     
     <header class="p-3 bg-white text-white shadow ">
-        <div class="container flex mx-auto justify-between items-center flex-col md:flex-row">
+        <div class="container flex mx-auto justify-between items-center md:flex-row flex-col">
             <a href="{{ route('principal') }}" class="flex items-center mb-4 md:mb-0 text-3xl font-bold text-black hover:text-gray-800 transition-colors duration-300">
                 <img src="{{ asset('img/logo.svg') }}" alt="logo" class="w-16">
                 <span class="text-green-600">Restaurant-</span><span class="text-blue-800">App</span>
             </a>
-            <nav class="text-xl flex  items-center gap-4 flex-col md:flex-row mt-2 md:mt-0">
+            <nav class="text-xl items-center gap-4 flex flex-col md:flex-row mt-2 md:mt-0">
                 @auth
-                    <div class="flex items-center justify-center gap-4">
+                    <div class="flex items-center justify-center gap-4 flex-col md:flex-row">
                         <a href="{{route('inicio')}}" class="text-green-600">Ver menu</a>
                         <a href="{{route('pedidos',auth()->user())}}" class="text-green-600">Ver pedidos</a>
                         <a href="{{route('notifications.user',auth()->user())}}" class="text-green-600">

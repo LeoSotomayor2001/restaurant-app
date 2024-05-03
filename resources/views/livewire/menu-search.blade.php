@@ -52,7 +52,7 @@
                         class="px-4 py-2 ml-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 
                         focus:outline-none focus:bg-blue-600"
                     >
-                      Ver Menú
+                      Ver Reseñas
                     </a>
                 </form>
                 
