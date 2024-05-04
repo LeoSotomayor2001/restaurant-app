@@ -19,7 +19,7 @@ Route::get('/login',[LoginController::class,'index'])->name('login')->middleware
 
 
 //Admin
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth','isAuth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/menus', [MenuController::class, 'index'])->name('menus.index');
     Route::get('/admin/create-menu', [MenuController::class, 'create'])->name('menus.create');

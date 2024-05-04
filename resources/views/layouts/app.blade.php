@@ -18,9 +18,9 @@
             <nav class="text-xl items-center gap-4 flex flex-col md:flex-row mt-2 md:mt-0">
                 @auth
                     <div class="flex items-center justify-center gap-4 flex-col md:flex-row">
-                        <a href="{{route('inicio')}}" class="text-green-600">Ver menu</a>
-                        <a href="{{route('pedidos',auth()->user())}}" class="text-green-600">Ver pedidos</a>
-                        <a href="{{route('notifications.user',auth()->user())}}" class="text-green-600">
+                        <a href="{{route('inicio')}}" class="text-green-600 p-1 rounded-md hover:shadow-md transition duration-300">Ver menu</a>
+                        <a href="{{route('pedidos',auth()->user())}}" class="text-green-600 p-1 rounded-md hover:shadow-md transition duration-300">Ver pedidos</a>
+                        <a href="{{route('notifications.user',auth()->user())}}" class="text-green-600 p-1 rounded-md hover:shadow-md transition duration-300">
                             <span>
                                 Notificaciones 
                                 <span class="badge">
@@ -30,7 +30,7 @@
                                 </span>
                             </span>
                         </a>
-                        <a href="{{route('logout')}}" class="text-red-600">Cerrar Sesión</a>
+                        <a href="{{route('logout')}}" class="text-red-600 p-1 rounded-md hover:shadow-md transition duration-300">Cerrar Sesión</a>
 
                     </div>
                 @endauth

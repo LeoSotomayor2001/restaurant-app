@@ -32,9 +32,19 @@
                     {{ session('success') }}
                 </p>
             @endif
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4">Enviar</button>
+            <button type="submit" class="mb-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4">Enviar</button>
            
         </form>
+        <div class="overflow-y-auto max-h-72 shadow-lg rounded-lg ">
+            @forelse ($menu->resenas->sortByDesc('created_at') as $resena)
+                <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                    <span class="font-bold">{{ $resena->user->name }}</span>
+                    <p class="text-gray-800">{{ $resena->resena }}</p>
+                </div>
+            @empty
+                
+            @endforelse
+        </div>
     </div>
 </section>
     

@@ -30,10 +30,12 @@ class RegisterUser extends Component
         ]);
         
         User::create($validatedData);
-
-        session()->flash('message', 'Usuario registrado exitosamente.');
-
-        return redirect()->route('principal');
+        //autenticar un usuario
+        auth()->attempt([
+            'email' => $this->email,
+            'password' => $this->password 
+        ]);
+        return redirect()->route('inicio');
     }
     public function render()
     {
